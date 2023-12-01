@@ -10,3 +10,4 @@ pytesseract
 sniffio
 starlette
 typing_extensions
+uvicorn==0.15.0
