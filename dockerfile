@@ -10,6 +10,7 @@ RUN apt-get update \
         tesseract-ocr \
     tesseract-ocr-chi-sim \
         tesseract-ocr-eng \
+    python3-tesserocr \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 # 将当前目录下的所有文件复制到容器中的 /app 目录
