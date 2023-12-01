@@ -12,7 +12,8 @@ os.environ['TESSDATA_PREFIX'] = '/usr/share/tessdata'
 
 
 def read_image_text(image):
-    text = pytesseract.image_to_string(image, lang='chi_sim+eng')
+    custom_config = r'--psm 10'
+    text = pytesseract.image_to_string(image, lang='chi_sim+eng', config=custom_config)
     return text
 
 
