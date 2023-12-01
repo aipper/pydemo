@@ -1,0 +1,12 @@
+annotated-types
+anyio
+fastapi
+idna
+packaging
+Pillow
+pydantic
+pydantic_core
+pytesseract
+sniffio
+starlette
+typing_extensions
