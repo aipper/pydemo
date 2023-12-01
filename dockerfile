@@ -1,14 +1,16 @@
-# 使用官方 Python 镜像作为基础镜像
-FROM python:3.10-slim
+FROM alpine:latest
 
 # 设置工作目录
 WORKDIR /app
 
-# 将当前目录下的所有文件复制到容器中的 /app 目录
+# 安装 Python、pip 和 Tesseract 以及相关依赖项
+RUN apk add --no-cache python3 py3-pip tesseract-ocr
+
+# 复制应用程序文件
 COPY . /app
 
-# 安装项目依赖
-RUN pip install --no-cache-dir -r requirements.txt
+# 安装应用程序依赖项
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # 暴露应用程序运行的端口
 EXPOSE 8000
