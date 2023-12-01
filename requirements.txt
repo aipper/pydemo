@@ -12,4 +12,4 @@ starlette
 typing_extensions
 uvicorn
 python-multipart
-cv2
+opencv-python
