@@ -4,7 +4,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # 安装 Python、pip 和 Tesseract 以及相关依赖项
-RUN apk add --no-cache python3 py3-pip tesseract-ocr
+RUN apk add --no-cache python3=3.10.0-r1 py3-pip tesseract-ocr
 
 # 复制应用程序文件
 COPY . /app
