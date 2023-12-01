@@ -5,7 +5,7 @@ FROM alpine:latest
 WORKDIR /app
 
 # 安装 Python 3.10 和 pip
-RUN apk add --no-cache python3=3.10.0-r1 py3-pip
+RUN apk add --no-cache python3=3.9.18-r0 py3-pip
 
 # 安装 Tesseract OCR 和相关依赖项
 RUN apk add --no-cache tesseract-ocr
