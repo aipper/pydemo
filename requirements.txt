@@ -10,4 +10,5 @@ pytesseract
 sniffio
 starlette
 typing_extensions
-uvicorn==0.15.0
+uvicorn
+python-multipart
