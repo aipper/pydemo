@@ -1,10 +1,14 @@
-FROM python:3.10-slim
+# 使用 Alpine Linux 作为基础镜像
+FROM alpine:latest
 
 # 设置工作目录
 WORKDIR /app
 
-# 安装 Python、pip 和 Tesseract 以及相关依赖项
-RUN apk add --no-cache  tesseract-ocr
+# 安装 Python 3.10 和 pip
+RUN apk add --no-cache python3=3.10.0-r1 py3-pip
+
+# 安装 Tesseract OCR 和相关依赖项
+RUN apk add --no-cache tesseract-ocr
 
 # 复制应用程序文件
 COPY . /app
