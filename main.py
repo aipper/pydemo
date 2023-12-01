@@ -3,16 +3,23 @@ from fastapi.responses import JSONResponse
 from PIL import Image
 import pytesseract
 import io
+import os
 
 app = FastAPI()
 
+os.environ['TESSDATA_PREFIX'] = '/usr/share/tessdata'
+
+
 def read_image_text(image):
-    text = pytesseract.image_to_string(image)
+    text = pytesseract.image_to_string(image, lang='chi_sim')
     return text
+
 
 @app.get("/")
 async def index():
     return JSONResponse(content="hello py")
+
+
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     try:
