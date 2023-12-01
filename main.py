@@ -10,6 +10,9 @@ def read_image_text(image):
     text = pytesseract.image_to_string(image)
     return text
 
+@app.get("/")
+async def():
+    return JSONResponse(content="hello py")
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     try:
