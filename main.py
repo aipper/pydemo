@@ -4,6 +4,7 @@ from PIL import Image
 import pytesseract
 import io
 import os
+import cv2
 
 app = FastAPI()
 
@@ -11,7 +12,7 @@ os.environ['TESSDATA_PREFIX'] = '/usr/share/tessdata'
 
 
 def read_image_text(image):
-    text = pytesseract.image_to_string(image, lang='chi_sim')
+    text = pytesseract.image_to_string(image, lang='chi_sim+eng')
     return text
 
 
@@ -26,9 +27,11 @@ async def create_upload_file(file: UploadFile = File(...)):
         # 读取上传的文件
         contents = await file.read()
         image = Image.open(io.BytesIO(contents))
+        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        _, binary_image = cv2.threshold(gray_image, 128, 255, cv2.THRESH_BINARY)
 
         # 使用 pytesseract 读取文本
-        text_content = read_image_text(image)
+        text_content = read_image_text(binary_image)
 
         # 返回读取到的文本
         return JSONResponse(content={"text_content": text_content}, status_code=200)
